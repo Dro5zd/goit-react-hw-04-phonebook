@@ -2,53 +2,53 @@ import {Notification} from './components/Notification/Notification';
 import {FeedbackFormWrapper} from './components/FeedbackFormWrapper/FeedbackFormWrapper';
 import {Statistics} from './components/Statistics/Statistics';
 import {FeedbackOptions} from './components/FeedbackOptions/FeedbackOptions';
-import {useState} from 'react';
+import React, {MouseEvent, useEffect, useState} from 'react';
 
-export const FeedbackApp = ()=> {
+export const FeedbackApp = () => {
 
-  // const [good, setGood] = useState(0)
-  // const [neutral, setNeutral] = useState(0)
-  // const [bad, setBad] = useState(0)
-  //
-  // setGood(good + 1)
-  // setNeutral(neutral + 1)
-  // setBad(bad + 1)
+    const [good, setGood] = useState(0);
+    const [neutral, setNeutral] = useState(0);
+    const [bad, setBad] = useState(0);
+    const [total, setTotal] = useState(0);
+    const [percentage, setPercentage] = useState(0);
 
-  const countTotalFeedback =() =>{
-      return 90
-    // return Object.values(state).reduce((acc: number, num: number) => acc + num, 0);
-  }
-  //
-  const countPositiveFeedbackPercentage=() =>{
-    // return Math.round(100 / this.countTotalFeedback() * this.state.good);
-  }
-  //
-  const buttonsTitle=() =>{
-    // return Object.keys(this.state);
-  }
 
-  const onLeaveFeedback = (e: any) => {
-    // const btnName = e.currentTarget.id;
-    // return this.setState(state => {
-    //   return {[btnName]: state[btnName] + 1};
-    // });
-  }
+    const onLeaveFeedback = (e: MouseEvent<HTMLButtonElement>) => {
+        const buttonId = e.currentTarget.id;
+        switch (buttonId) {
+            case 'bad':
+                setBad(bad + 1);
+                break;
+            case 'neutral':
+                setNeutral(neutral + 1);
+                break;
+            case 'good':
+                setGood(good + 1);
+                break;
+            default:
+                throw new Error('Oops')
+        }
+    }
+
+    useEffect(() => {
+        setTotal(bad + good + neutral)
+        setPercentage(Math.round(100 / total * good))
+    }, [bad, good, neutral, total])
 
     return (
         <section>
-          <FeedbackFormWrapper title="PLEASE LEAVE FEEDBACK">
-            <FeedbackOptions options={['bad', 'neutral', 'good']} onLeaveFeedback={onLeaveFeedback}/>
-              {/*<FeedbackOptions options={buttonsTitle()} onLeaveFeedback={onLeaveFeedback}/>*/}
-            {countTotalFeedback() !== 0
-                ?
-              <Statistics good={3}
-                              neutral={4}
-                              bad={6}
-                              total={100}
-                              positivePercentage={20 || 0}
-              />
-                : <Notification message="There is no feedback"/>}
-          </FeedbackFormWrapper>
+            <FeedbackFormWrapper title="PLEASE LEAVE FEEDBACK">
+                <FeedbackOptions onLeaveFeedback={onLeaveFeedback}/>
+                {total !== 0
+                    ?
+                    <Statistics good={good}
+                                neutral={neutral}
+                                bad={bad}
+                                total={total}
+                                positivePercentage={percentage || 0}
+                    />
+                    : <Notification message="There is no feedback"/>}
+            </FeedbackFormWrapper>
         </section>
 
     );
