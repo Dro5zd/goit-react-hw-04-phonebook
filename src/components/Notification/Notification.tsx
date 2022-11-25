@@ -11,3 +11,4 @@ export const Notification: React.FC<NotificationProps> = ({message}) =>{
     <p>{message}</p>
   </StatisticsWrapper>;
 }
+
