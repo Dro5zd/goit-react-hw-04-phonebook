@@ -12,7 +12,6 @@ export const FeedbackApp = () => {
     const [total, setTotal] = useState(0);
     const [percentage, setPercentage] = useState(0);
 
-
     const onLeaveFeedback = (e: MouseEvent<HTMLButtonElement>) => {
         const buttonId = e.currentTarget.id;
         switch (buttonId) {
