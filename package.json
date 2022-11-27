@@ -5,10 +5,13 @@
   "private": true,
   "dependencies": {
     "@styled-icons/bootstrap": "^10.46.0",
+    "@styled-icons/boxicons-solid": "^10.46.0",
     "@styled-icons/evaicons-solid": "^10.46.0",
+    "@styled-icons/fluentui-system-filled": "^10.46.0",
     "@styled-icons/heroicons-outline": "^10.46.0",
     "@styled-icons/heroicons-solid": "^10.46.0",
     "@styled-icons/material": "^10.46.0",
+    "@styled-icons/remix-fill": "^10.46.0",
     "@styled-icons/typicons": "^10.46.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

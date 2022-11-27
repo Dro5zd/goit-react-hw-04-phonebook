@@ -72,7 +72,11 @@ export const DeleteIcon = styled(DeleteOutline)`
   }
 `;
 
-export const ContactsSpan = styled.span`
+interface IContactsSpan {
+    type: string;
+}
+
+export const ContactsSpan = styled.span<IContactsSpan>`
   width: 200px;
   display: block;
   font-weight: ${({type}) => type === 'number' ? 100 : 400};

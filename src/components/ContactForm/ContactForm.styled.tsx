@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 import {Phone} from '@styled-icons/heroicons-solid/Phone';
 import {User} from '@styled-icons/heroicons-outline/User';
+import {ArrowLeftCircleFill} from '@styled-icons/bootstrap/ArrowLeftCircleFill';
+
+export const BackIcon = styled(ArrowLeftCircleFill)`
+  left: 21px;
+  top: 44px;
+  width: 25px;
+  position: absolute;
+  color: grey;
+`;
 
 export const ContactFormWrapper = styled.form`
   display: flex;
@@ -8,23 +17,19 @@ export const ContactFormWrapper = styled.form`
   align-items: center;
   justify-content: center;
   gap: 20px;
-
 `;
 
 export const ContactFormLabel = styled.label`
-
   display: flex;
   flex-direction: column;
   position: relative;
 `;
 
 export const ContactFormTitle = styled.h2`
-  //height: 100px;
   text-align: center;
   margin-top: 45px;
   margin-bottom: 20px;
   font-size: 20px;
-  //background-color: #fff;
 `;
 
 export const ContactFormButton = styled.button`
